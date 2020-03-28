@@ -144,6 +144,9 @@ client.on('message', async message => {
 	} else if (message.content.startsWith(`${process.env.prefix}resume`)) {
 		resume(message, musList);
 		return;
+	} else if (message.content.startsWith(`${process.env.prefix}volume`)) {
+		volume(message, musList);
+		return;
 	}
 	// FIX THIS
 	// else if (message.content.startsWith(`${process.env.prefix}volume`)) {
@@ -285,14 +288,18 @@ function resume(message, musList) {
 
 // FIX THIS
 function volume(message, musList, args) {
-	if (!message.member.voiceChannel)
-		return message.channel.send('You are not in a voice channel!');
-	if (!musList) return message.channel.send('There is nothing playing.');
-	if (!args[1])
-		return message.channel.send(`The current volume is: **${musList.volume}**`);
-	musList.volume = args[1];
+	if (!musList) return msg.channel.send('There is nothing playing.');
+	if (!args[1]) return mgs.channel.send(`The current volume level is: **${musList.volume}**`);
 	musList.connection.dispatcher.setVolumeLogarithmic(args[1] / 5);
-	return message.channel.send(`I set the volume to: **${args[1]}**`);
+	return undefined;
+	// if (!message.member.voiceChannel)
+	// 	return message.channel.send('You are not in a voice channel!');
+	// if (!musList) return message.channel.send('There is nothing playing.');
+	// if (!args[1])
+	// 	return message.channel.send(`The current volume is: **${musList.volume}**`);
+	// musList.volume = args[1];
+	// musList.connection.dispatcher.setVolumeLogarithmic(args[1] / 5);
+	// return message.channel.send(`I set the volume to: **${args[1]}**`);
 }
 
 function play(guild, song) {
