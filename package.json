@@ -1,0 +1,17 @@
+{
+  "name": "discordbot",
+  "version": "0.0.1",
+  "description": "Omar's Bot",
+  "main": "index.js",
+  "author": "Omar",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "ffmpeg": "0.0.4",
+    "lzma-native": "^5.0.0",
+    "node-sass": "^4.13.0",
+    "opusscript": "0.0.7",
+    "simple-youtube-api": "^5.2.1",
+    "ytdl-core": "^1.0.3"
+  }
+}
