@@ -3,9 +3,9 @@ const client = new Discord.Client({
     disableEveryone: true
 });
 const queue = new Map();
-const { prefix, token, GOOGLE_API_KEY } = require('./config.json');
+// const { process.env.prefix, token, GOOGLE_API_KEY } = require('./config.json');
 const YouTube = require('simple-youtube-api');
-const youtube = new YouTube(GOOGLE_API_KEY);
+const youtube = new YouTube(process.env.GOOGLE_API_KEY);
 const ytdl = require('ytdl-core');
 
 
@@ -27,24 +27,24 @@ client.on('reconnecting', () => {
 });
 
 // Login with token
-client.login(token);
+client.login(process.env.TOKEN);
 
 // Read messages to parse into commands
 client.on('message', async message => {
     // Ignore own text
     if (message.author.bot) return;
-    // Check if message starts with prefix
-    if (!message.content.startsWith(prefix)) return;
+    // Check if message starts with process.env.prefix
+    if (!message.content.startsWith(process.env.prefix)) return;
     // Music Queue Const
     const musList = queue.get(message.guild.id);
 
     // Dumb !ping pong command mainly for testing
-    if (message.content === `${prefix}ping`) {
+    if (message.content === `${process.env.prefix}ping`) {
         message.reply('Pong!');
     }
 
     // Bruh command
-    if (message.content === `${prefix}bruh`) {
+    if (message.content === `${process.env.prefix}bruh`) {
         const attachment = new Discord.Attachment(
             'https://cdn.discordapp.com/attachments/649620218376880152/649627775908577280/Bruh_Sound_Effect_2.mp4'
         );
@@ -52,7 +52,7 @@ client.on('message', async message => {
     }
 
     // Why command
-    if (message.content === `${prefix}why`) {
+    if (message.content === `${process.env.prefix}why`) {
         const attachment = new Discord.Attachment(
             'https://i.imgur.com/89XcQzT.png'
         );
@@ -60,7 +60,7 @@ client.on('message', async message => {
     }
 
     // Aw man command
-    if (message.content === `${prefix}awwman`) {
+    if (message.content === `${process.env.prefix}awwman`) {
         const attachment = new Discord.Attachment(
             'https://i.imgur.com/A99CLCU.png'
         );
@@ -68,7 +68,7 @@ client.on('message', async message => {
     }
 
     // OMEGALUL command
-    if (message.content === `${prefix}omegalul`) {
+    if (message.content === `${process.env.prefix}omegalul`) {
         const attachment = new Discord.Attachment(
             'https://i.imgur.com/totViOf.png'
         );
@@ -76,7 +76,7 @@ client.on('message', async message => {
     }
 
     // POGGERS command
-    if (message.content === `${prefix}poggers`) {
+    if (message.content === `${process.env.prefix}poggers`) {
         const attachment = new Discord.Attachment(
             'https://i.imgur.com/w0pkR5k.png'
         );
@@ -84,7 +84,7 @@ client.on('message', async message => {
     }
 
     // PEPEGA command
-    if (message.content === `${prefix}pepega`) {
+    if (message.content === `${process.env.prefix}pepega`) {
         const attachment = new Discord.Attachment(
             'https://i.imgur.com/oEvmypZ.png'
         );
@@ -92,7 +92,7 @@ client.on('message', async message => {
     }
 
     // HYPERS command
-    if (message.content === `${prefix}hypers`) {
+    if (message.content === `${process.env.prefix}hypers`) {
         const attachment = new Discord.Attachment(
             'https://i.imgur.com/GFJxx2J.png'
         );
@@ -100,7 +100,7 @@ client.on('message', async message => {
     }
 
     // monkaW command
-    if (message.content === `${prefix}monkaw`) {
+    if (message.content === `${process.env.prefix}monkaw`) {
         const attachment = new Discord.Attachment(
             'https://i.imgur.com/S1ZMhMD.png'
         );
@@ -108,7 +108,7 @@ client.on('message', async message => {
     }
 
     // monkaS command
-    if (message.content === `${prefix}monkas`) {
+    if (message.content === `${process.env.prefix}monkas`) {
         const attachment = new Discord.Attachment(
             'https://i.imgur.com/lvhaKMW.png'
         );
@@ -116,7 +116,7 @@ client.on('message', async message => {
     }
 
     // Uno Reverse command
-    if (message.content === `${prefix}reverse`) {
+    if (message.content === `${process.env.prefix}reverse`) {
         const attachment = new Discord.Attachment(
             'https://i.imgur.com/yXEiYQ4.png'
         );
@@ -124,29 +124,29 @@ client.on('message', async message => {
     }
 
     // Music commands
-    if (message.content.startsWith(`${prefix}play`)) {
+    if (message.content.startsWith(`${process.env.prefix}play`)) {
         execute(message, musList);
-    } else if (message.content.startsWith(`${prefix}skip`)) {
+    } else if (message.content.startsWith(`${process.env.prefix}skip`)) {
         skip(message, musList);
         return;
-    } else if (message.content.startsWith(`${prefix}stop`)) {
+    } else if (message.content.startsWith(`${process.env.prefix}stop`)) {
         stop(message, musList);
         return;
-    } else if (message.content.startsWith(`${prefix}nowplaying`)) {
+    } else if (message.content.startsWith(`${process.env.prefix}nowplaying`)) {
         nowplaying(message, musList);
         return;
-    } else if (message.content.startsWith(`${prefix}upnext`)) {
+    } else if (message.content.startsWith(`${process.env.prefix}upnext`)) {
         upnext(message, musList);
         return;
-    } else if (message.content.startsWith(`${prefix}pause`)) {
+    } else if (message.content.startsWith(`${process.env.prefix}pause`)) {
         pause(message, musList);
         return;
-    } else if (message.content.startsWith(`${prefix}resume`)) {
+    } else if (message.content.startsWith(`${process.env.prefix}resume`)) {
         resume(message, musList);
         return;
     }
     // FIX THIS
-    // else if (message.content.startsWith(`${prefix}volume`)) {
+    // else if (message.content.startsWith(`${process.env.prefix}volume`)) {
     //   volume(message, musList);
     //   return;
     // }
