@@ -13,7 +13,6 @@ client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 	// client.user.setGame('Being overhauled');
 	client.user.setActivity('BEING OVERHAULED', { type: 'PLAYING' })
-		.then(presence => console.log(`Activity set to ${presence.activities.name}`))
 		.catch(console.error);
 });
 client.on('error', () => {
