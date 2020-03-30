@@ -12,13 +12,6 @@ const ytdl = require('ytdl-core');
 // Check bot
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    // client.user.setStatus('available');
-    client.user.setPresence ({
-    	activity: {
-    		name: 'test',
-    		status: 'available'
-    	}
-    });
 });
 client.on('error', () => {
     console.log(`Error ${console.error}!`);
@@ -32,6 +25,11 @@ client.on('disconnect', () => {
 client.on('reconnecting', () => {
     console.log(`Reconnecting to the server`);
 });
+
+// Set custom presence
+client.user.setPresence({ activity: { name: 'with discord.js' }, status: 'idle' })
+    .then(console.log)
+    .catch(console.error);
 
 // Login with token
 client.login(process.env.TOKEN);
