@@ -3,7 +3,6 @@ const client = new Discord.Client({
 	disableEveryone: true
 });
 const queue = new Map();
-// const { process.env.prefix, token, GOOGLE_API_KEY } = require('./config.json');
 const YouTube = require('simple-youtube-api');
 const youtube = new YouTube(process.env.GOOGLE_API_KEY);
 const ytdl = require('ytdl-core');
@@ -12,7 +11,7 @@ const ytdl = require('ytdl-core');
 // Check bot
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
-	client.user.setGame('Test');
+	client.user.setGame('Being overhauled');
 });
 client.on('error', () => {
 	console.log(`Error ${console.error}!`);
