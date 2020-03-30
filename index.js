@@ -12,7 +12,7 @@ const ytdl = require('ytdl-core');
 // Check bot
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
-	client.user.setPresence({ activity: { name: 'with discord.js' }, status: 'idle' });
+	client.user.setGame('Test');
 });
 client.on('error', () => {
 	console.log(`Error ${console.error}!`);
