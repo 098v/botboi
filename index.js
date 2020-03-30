@@ -12,7 +12,7 @@ const ytdl = require('ytdl-core');
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 	// client.user.setGame('Being overhauled');
-	client.user.setActivity('BEING OVERHAULED', { type: 'PLAYING' })
+	client.user.setActivity('Will be overhauled soon', { type: 'PLAYING' })
 		.catch(console.error);
 });
 client.on('error', () => {
