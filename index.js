@@ -11,7 +11,10 @@ const ytdl = require('ytdl-core');
 // Check bot
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
-	client.user.setGame('Being overhauled');
+	// client.user.setGame('Being overhauled');
+	client.user.setActivity('BEING OVERHAULED', { type: 'PLAYING' })
+		.then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
+		.catch(console.error);
 });
 client.on('error', () => {
 	console.log(`Error ${console.error}!`);
